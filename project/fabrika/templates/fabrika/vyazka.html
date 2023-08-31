@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+
+{% block main %}
+<div class="p-4">
+    <div class="d-flex justify-content-around">
+        <div class="col-12">
+            <h2 class="text-center">Вязка</h2>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Старший взял</th>
+                    <th scope="col">На какую модель товара взял</th>
+                    <th scope="col">Взятая масса</th>
+                    <th scope="col">Нити</th>
+                    <th scope="col">Дата взятия</th>
+                    <th scope="col">Оставшийся материал у старшего</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for materialtaked in materialtakeds %}
+                <tr>
+                    <th>{{ forloop.counter }}</th>
+                    <td>{{ materialtaked.profile }}</td>
+                    <td>{{ materialtaked.for_model }}</td>
+                    <td>{{ materialtaked.taked_mass }}</td>
+                    <td>{{ materialtaked.material }}</td>
+                    <td>{{ materialtaked.created_at }}</td>
+                    <td>{{ materialtaked.remaining_mass }}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+</div>
+{% endblock main %}

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+
+{% block main %}
+<div class="p-4">
+    <div class="d-flex justify-content-around">
+        <div class="col-12">
+            <h2 class="text-center">Склад нитей</h2>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Название нити</th>
+                    <th scope="col">Фирма</th>
+                    <th scope="col">Цвет</th>
+                    <th scope="col">Масса</th>
+                    <th scope="col">Тип</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for material in materials %}
+                <tr>
+                    <th>{{ forloop.counter }}</th>
+                    <td>{{ material.title }}</td>
+                    <td>{{ material.firm }}</td>
+                    <td>{{ material.color }}</td>
+                    <td>{{ material.mass }} кг</td>
+                    <td>{{ material.type }}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+</div>
+{% endblock main %}

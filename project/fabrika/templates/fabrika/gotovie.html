@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+
+{% block main %}
+<div class="p-4">
+    <div class="d-flex justify-content-around">
+        <div class="col-12">
+            <h2 class="text-center">Готовые товары</h2>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Товар</th>
+                    <th scope="col">Количество в партии</th>
+                    <th scope="col">Дата</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for product in products %}
+                <tr>
+                    <th>{{ forloop.counter }}</th>
+                    <td>{{ product.product }}</td>
+                    <td>{{ product.count }}</td>
+                    <td>{{ product.created_at }}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+</div>
+{% endblock main %}

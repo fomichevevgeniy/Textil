@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+
+
+{% block main %}
+
+<div class="p-4">
+    <div class="d-flex justify-content-around">
+        <div class="col-6">
+            <h2 class="text-center">Склад нитей</h2>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Название нити</th>
+                    <th scope="col">Фирма</th>
+                    <th scope="col">Цвет</th>
+                    <th scope="col">Масса</th>
+                    <th scope="col">Тип</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for material in materials %}
+                <tr>
+                    <th>{{ forloop.counter }}</th>
+                    <td>{{ material.title }}</td>
+                    <td>{{ material.firm }}</td>
+                    <td>{{ material.color }}</td>
+                    <td>{{ material.mass }} кг</td>
+                    <td>{{ material.type }}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="col-6">
+            <h2 class="text-center">Вязка</h2>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Дата</th>
+                    <th scope="col">Кто взял</th>
+                    <th scope="col">Взято</th>
+                    <th scope="col">Взятая масса</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for materialtaked in materialtakeds %}
+                <tr>
+                    <th>{{ forloop.counter }}</th>
+                    <td>{{ materialtaked.created_at }}</td>
+                    <td>{{ materialtaked.profile }}</td>
+                    <td>{{ materialtaked.material }}</td>
+                    <td>{{ materialtaked.taked_mass }}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="d-flex justify-content-around">
+        <div class="col-6">
+            <h2 class="text-center">Шитье</h2>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Дата</th>
+                    <th scope="col">№ Партии</th>
+                    <th scope="col">Модель</th>
+                    <th scope="col">Кол-во</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for clothproductmodel in clothproductmodels %}
+                <tr>
+                    <th>{{ forloop.counter }}</th>
+                    <td>{{ clothproductmodel.created_at }}</td>
+                    <td>{{ clothproductmodel.pk }}</td>
+                    <td>{{ clothproductmodel.material_taked.material.for_model }}</td>
+                    <td>{{ clothproductmodel.material_taked.count }}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="col-6">
+            <h2 class="text-center">Готовые товары</h2>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Модель товара</th>
+                    <th scope="col">Количество</th>
+                    <th scope="col">Дата готовности</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for product in products %}
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{ product.product }}</td>
+                    <td>{{ product.count }}</td>
+                    <td>{{ product.created_at }}</td>
+                </tr>
+
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock main %}

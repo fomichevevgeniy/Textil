@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+
+{% block main %}
+<div class="p-4">
+    <div class="d-flex justify-content-around">
+        <div class="col-12">
+            <h2 class="text-center">Клиенты</h2>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Имя Фамилия</th>
+                    <th scope="col">Баланс клиента</th>
+                    <th scope="col">Номер телефона</th>
+                    <th scope="col">Заказанная модель товара</th>
+                    <th scope="col">Количество заказа</th>
+                    <th scope="col">Статус готовности</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for client in clients %}
+                <tr>
+                    <th>{{ forloop.counter }}</th>
+                    <td>{{ client.client_balance }}</td>
+                    <td>{{ client.client_name }}</td>
+                    <td>{{ client.client_number }}</td>
+                    <td>{{ client.client_product }}</td>
+                    <td>{{ client.client_quantity }} кг</td>
+                    <td>{{ client.client_status }}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+</div>
+{% endblock main %}

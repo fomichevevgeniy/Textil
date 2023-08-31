@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+
+{% block main %}
+<div class="p-4">
+    <div class="d-flex justify-content-around">
+        <div class="col-12">
+            <h2 class="text-center">Шитье</h2>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Из какой вязки</th>
+                    <th scope="col">Работник Бичув</th>
+                    <th scope="col">Работник Чок</th>
+                    <th scope="col">Работник Аверлок</th>
+                    <th scope="col">Работник Кательни</th>
+                    <th scope="col">Работник Тугма</th>
+                    <th scope="col">Работник Петля</th>
+                    <th scope="col">Работник Дазмол</th>
+                    <th scope="col">Работник Чистка</th>
+                    <th scope="col">Работник Упаковка</th>
+                    <th scope="col">Работник Жемчуг</th>
+                    <th scope="col">Дата</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for clothproductmodel in clothproductmodels %}
+                <tr>
+                    <th>{{ forloop.counter }}</th>
+                    <td>{{ clothproductmodel.material_taked.material.for_model }}</td>
+                    <td>{{ clothproductmodel.bichuv_employee }}</td>
+                    <td>{{ clothproductmodel.chok_employee }}</td>
+                    <td>{{ clothproductmodel.averlock_employee }}</td>
+                    <td>{{ clothproductmodel.katelniy_employee }}</td>
+                    <td>{{ clothproductmodel.tugma_employee }}</td>
+                    <td>{{ clothproductmodel.petlya_employee }}</td>
+                    <td>{{ clothproductmodel.dazmol_employee }}</td>
+                    <td>{{ clothproductmodel.chistka_employee }}</td>
+                    <td>{{ clothproductmodel.jemchug_employee }}</td>
+                    <td>{{ clothproductmodel.upakovka_employee }}</td>
+                    <td>{{ clothproductmodel.created_at }}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+</div>
+{% endblock main %}
